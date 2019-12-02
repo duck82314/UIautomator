@@ -1,0 +1,11 @@
+from control_mobile import control_app
+
+app_dict = {
+      "LINE":"001.LINE.png",
+      "Facebook":"001.Facebook.png",
+      "Google":"001.Google.png"
+      }
+
+driver = control_app()
+driver.click_app(app_dict)
+driver.clearApp()
