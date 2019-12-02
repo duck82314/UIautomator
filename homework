@@ -1,0 +1,36 @@
+class control_app:
+    
+    """My first class in python."""
+    d = None
+
+    def __init__(self):
+        from uiautomator import device as d
+        d.press.home()
+        d.wait.update()
+        self.d = d
+        
+    def click_app(self, app_dict):
+        for k,v in app_dict.items():
+            self.d(text=k).click()
+            self.d.wait.update()
+            self.d.screenshot(v)
+            self.d.wait.update()
+            self.d.press.home()
+            self.d.wait.update()
+        
+    def clearApp(self):
+        self.d.press("recent")
+        self.d.wait.update()        
+        sx, sy, ex, ey = 169, 246, 169, 690
+        self.d.swipe(sx, sy, ex, ey, steps=10)
+        self.d.wait.update()
+        self.d.swipe(sx, sy, ex, ey, steps=10)
+        self.d.wait.update()
+        self.d.swipe(sx, sy, ex, ey, steps=50)
+        self.d.wait.update()
+        self.d.screenshot("004.Clear.png")
+        self.d.wait.update()
+        self.d(text="CLEAR ALL").click()
+        self.d.wait.update()
+        self.d.screenshot("005.Home(End).png")
+        
